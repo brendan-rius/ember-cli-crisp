@@ -29,7 +29,6 @@ export default Ember.Service.extend({
 
   _callSet() {
     if (this.hasCrisp()) {
-      console.log('args', ...arguments);
       return window.$crisp.set(...arguments);
     }
   },
