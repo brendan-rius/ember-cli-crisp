@@ -60,4 +60,24 @@ export default Ember.Service.extend({
   isLarge() {
     return this._call("chat:large");
   },
+
+  isAvailable() {
+    return this._call("website:available");
+  },
+
+  getIdentifier() {
+    return this._call("session:identifier");
+  },
+
+  getData(key) {
+    return this._call("session:data", key);
+  },
+
+  getEmail() {
+    return this._call("user:email");
+  },
+
+  getNickname() {
+    return this._call("user:nickname");
+  },
 });

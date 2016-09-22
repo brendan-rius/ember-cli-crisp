@@ -56,5 +56,11 @@ The defined methods are:
  * isVisible()
  * isSmall()
  * isLarge()
+ * isAvailable()
+ * isLarge()
+ * getIdentifier()
+ * getData(key)
+ * getEmail()
+ * getNickname()
  
 More to come soon.
