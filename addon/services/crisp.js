@@ -15,69 +15,103 @@ export default Ember.Service.extend({
     return !!window.$crisp;
   },
 
-  /**
-   * Call a Crisp event with arguments if Crisp is activated
-   * @private
-   */
-  _call() {
+  _callDo() {
     if (this.hasCrisp()) {
-      return $crisp.do(...arguments);
+      return window.$crisp.do(...arguments);
+    }
+  },
+
+  _callIs() {
+    if (this.hasCrisp()) {
+      return window.$crisp.is(...arguments);
+    }
+  },
+
+  _callSet() {
+    if (this.hasCrisp()) {
+      return window.$crisp.set(...arguments);
+    }
+  },
+
+  _callGet() {
+    if (this.hasCrisp()) {
+      return window.$crisp.get(...arguments);
     }
   },
 
   open() {
-    this._call("chat:open");
+    this._callDo("chat:open");
   },
 
   close() {
-    this._call("chat:close");
+    this._callDo("chat:close");
   },
 
   toggle() {
-    this._call("chat:toggle");
+    this._callDo("chat:toggle");
+  },
+
+  show() {
+    this._callDo("chat:show");
+  },
+
+  hide() {
+    this._callDo("chat:hide");
   },
 
   sendMessage(type, content) {
-    this._call("message:send", [type, content]);
+    this._callDo("message:send", [type, content]);
   },
 
   isOpen() {
-    return this._call("chat:opened");
+    return this._callIs("chat:opened");
   },
 
   isClosed() {
-    return this._call("chat:closed");
+    return this._callIs("chat:closed");
   },
 
   isVisible() {
-    return this._call("chat:visible");
+    return this._callIs("chat:visible");
   },
 
   isSmall() {
-    return this._call("chat:small");
+    return this._callIs("chat:small");
   },
 
   isLarge() {
-    return this._call("chat:large");
+    return this._callIs("chat:large");
   },
 
   isAvailable() {
-    return this._call("website:available");
+    return this._callIs("website:available");
   },
 
   getIdentifier() {
-    return this._call("session:identifier");
+    return this._callGet("session:identifier");
   },
 
   getData(key) {
-    return this._call("session:data", key);
+    return this._callGet("session:data", key);
   },
 
   getEmail() {
-    return this._call("user:email");
+    return this._callGet("user:email");
   },
 
   getNickname() {
-    return this._call("user:nickname");
+    return this._callGet("user:nickname");
+  },
+
+  setData(key , value) {
+    return this._callSet("session:data", [key, value]);
+  },
+
+  setEmail(email) {
+    return this._callSet("user:email", email);
+  },
+
+  setNickname(nickname) {
+    return this._callSet("user:nickname", nickname);
   },
 });

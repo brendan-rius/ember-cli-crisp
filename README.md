@@ -19,6 +19,7 @@ ENV['crisp'] = {
 ```
 
 You can get your website ID here by getting your chatbox code here : https://app.crisp.im/settings/websites
+
 The code should look like: 
 
 ```
@@ -62,5 +63,10 @@ The defined methods are:
  * getData(key)
  * getEmail()
  * getNickname()
+ * setData(key , value)
+ * setEmail(email)
+ * setNickname(nickname)
+
+[see more details in the official documentation.](https://help.crisp.im/answer/which-crisp-events-are-available/)
  
 More to come soon.
