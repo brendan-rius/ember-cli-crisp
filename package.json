@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-crisp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Crisp integration for Ember",
   "directories": {
     "doc": "doc",
