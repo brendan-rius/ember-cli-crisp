@@ -29,6 +29,7 @@ export default Ember.Service.extend({
 
   _callSet() {
     if (this.hasCrisp()) {
+      console.log('args', ...arguments);
       return window.$crisp.set(...arguments);
     }
   },
@@ -103,7 +104,7 @@ export default Ember.Service.extend({
     return this._callGet("user:nickname");
   },
 
-  setData(key , value) {
+  setData(key, value) {
     return this._callSet("session:data", [key, value]);
   },
 
