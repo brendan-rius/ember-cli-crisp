@@ -1,27 +1,60 @@
 # Ember-cli-crisp
 
-This README outlines the details of collaborating on this Ember addon.
+[Crisp](https://crisp.im/en/) integration for Ember.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-cli-crisp`
-* `npm install`
-* `bower install`
+```bash
+ember install ember-cli-crisp
+```
 
-## Running
+## Configuration
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+Place this in your `config/environment.js`:
 
-## Running Tests
+```javascript
+ENV['crisp'] = {
+  WEBSITE_ID: 'YOUR_WEBSITE_ID_HERE'
+};
+```
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+You can get your website ID here by getting your chatbox code here : https://app.crisp.im/settings/websites
+The code should look like: 
 
-## Building
+```
+<script type="text/javascript">CRISP_WEBSITE_ID = "8aaaaac5-e1f7-4443-9f83-2545361580ft";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.im/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+```
 
-* `ember build`
+Here, `8aaaaac5-e1f7-4443-9f83-2545361580ft` is the website ID.
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+## Usage
+
+The addon creates a service named `crisp` that you can use like so:
+
+```javascript
+import Ember from "ember";
+import ScrollMixin from "forwardable-frontend/mixins/scroll-mixin";
+
+export default Ember.Controller.extend(ScrollMixin, {
+  crisp: Ember.inject.service(),
+
+  actions: {
+    myAction() {
+      this.get('crisp').open();
+    }
+  }
+});
+
+```
+
+The defined methods are:
+
+ * toggle()
+ * sendMessage(type, content)
+ * isOpen()
+ * isClosed()
+ * isVisible()
+ * isSmall()
+ * isLarge()
+ 
+More to come soon.

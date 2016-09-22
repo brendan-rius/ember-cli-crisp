@@ -53,10 +53,6 @@ export default Ember.Service.extend({
     return this._call("chat:visible");
   },
 
-  isOpen() {
-    return this._call("chat:open");
-  },
-
   isSmall() {
     return this._call("chat:small");
   },
