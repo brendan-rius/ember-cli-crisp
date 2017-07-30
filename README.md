@@ -34,9 +34,8 @@ The addon creates a service named `crisp` that you can use like so:
 
 ```javascript
 import Ember from "ember";
-import ScrollMixin from "forwardable-frontend/mixins/scroll-mixin";
 
-export default Ember.Controller.extend(ScrollMixin, {
+export default Ember.Controller.extend({
   crisp: Ember.inject.service(),
 
   actions: {
